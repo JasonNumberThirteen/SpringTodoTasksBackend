@@ -14,7 +14,7 @@
 ## Used technologies
 - IntelliJ IDEA 2022.3.2 (Ultimate Edition) IDE for writing code
 - Eclipse Adoptium 17.0.4.1+1 64-bit (Java binaries)
-- Spring Boot 3.0.1 with the following dependencies:
+- Spring Boot 3.0.2 with the following dependencies:
   - Spring Web
   - Spring Data JPA
   - PostgreSQL Driver
