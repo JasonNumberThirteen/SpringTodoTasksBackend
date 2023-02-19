@@ -67,6 +67,23 @@ public class TaskController
 		}
 	}
 
+	@GetMapping("/tasks/completed")
+	public ResponseEntity<List<Task>> getAllCompletedTasks()
+	{
+		try
+		{
+			List<Task> tasks = taskService.getAllCompletedTasks();
+
+			return new ResponseEntity<>(tasks, HttpStatus.OK);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+
+			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+
 	@PutMapping("/tasks/{id}")
 	public ResponseEntity<Task> updateTask(@PathVariable("id") Long id, @RequestBody Task task)
 	{

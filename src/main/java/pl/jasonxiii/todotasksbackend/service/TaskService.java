@@ -36,6 +36,11 @@ public class TaskService
 		return taskRepository.findAll();
 	}
 
+	public List<Task> getAllCompletedTasks()
+	{
+		return taskRepository.findByCompleted(true);
+	}
+
 	public Task updateTask(Long id, Task task)
 	{
 		Optional<Task> searchedTask = taskRepository.findById(id);

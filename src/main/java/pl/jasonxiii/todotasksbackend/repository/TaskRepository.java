@@ -10,5 +10,5 @@ import java.util.List;
 public interface TaskRepository extends JpaRepository<Task, Long>
 {
 	List<Task> findByName(String name);
-	Boolean findByCompleted(Boolean completed);
+	List<Task> findByCompleted(Boolean completed);
 }
