@@ -60,7 +60,7 @@ public class Task
 		return description;
 	}
 
-	public Boolean getCompleted()
+	public Boolean isCompleted()
 	{
 		return completed;
 	}

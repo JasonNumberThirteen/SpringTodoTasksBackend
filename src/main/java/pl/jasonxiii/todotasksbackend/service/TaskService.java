@@ -46,7 +46,7 @@ public class TaskService
 
 			foundTask.setName(task.getName());
 			foundTask.setDescription(task.getDescription());
-			foundTask.setCompleted(task.getCompleted());
+			foundTask.setCompleted(task.isCompleted());
 
 			return taskRepository.save(foundTask);
 		}
