@@ -12,25 +12,19 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 @CrossOrigin(origins = "http://localhost/3000")
-public class TaskController
-{
+public class TaskController {
 	private TaskService taskService;
 
 	@Autowired
-	public void setTaskService(TaskService ts)
-	{
+	public void setTaskService(TaskService ts) {
 		taskService = ts;
 	}
 
 	@PostMapping("/tasks")
-	public ResponseEntity<Task> createTask(@RequestBody Task task)
-	{
-		try
-		{
+	public ResponseEntity<Task> createTask(@RequestBody Task task) {
+		try {
 			return new ResponseEntity<>(taskService.createTask(task), HttpStatus.CREATED);
-		}
-		catch (Exception e)
-		{
+		} catch (Exception e) {
 			e.printStackTrace();
 
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -38,12 +32,10 @@ public class TaskController
 	}
 
 	@GetMapping("/tasks/{id}")
-	public ResponseEntity<Task> getTaskById(@PathVariable("id") Long id)
-	{
+	public ResponseEntity<Task> getTaskById(@PathVariable("id") Long id) {
 		Task searchedTask = taskService.getTaskById(id);
 
-		if(searchedTask == null)
-		{
+		if (searchedTask == null) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 
@@ -51,16 +43,12 @@ public class TaskController
 	}
 
 	@GetMapping("/tasks")
-	public ResponseEntity<List<Task>> getAllTasks()
-	{
-		try
-		{
+	public ResponseEntity<List<Task>> getAllTasks() {
+		try {
 			List<Task> tasks = taskService.getAllTasks();
 
 			return new ResponseEntity<>(tasks, HttpStatus.OK);
-		}
-		catch (Exception e)
-		{
+		} catch (Exception e) {
 			e.printStackTrace();
 
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -68,16 +56,12 @@ public class TaskController
 	}
 
 	@GetMapping("/tasks/completed")
-	public ResponseEntity<List<Task>> getAllCompletedTasks()
-	{
-		try
-		{
+	public ResponseEntity<List<Task>> getAllCompletedTasks() {
+		try {
 			List<Task> tasks = taskService.getAllCompletedTasks();
 
 			return new ResponseEntity<>(tasks, HttpStatus.OK);
-		}
-		catch (Exception e)
-		{
+		} catch (Exception e) {
 			e.printStackTrace();
 
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -85,12 +69,10 @@ public class TaskController
 	}
 
 	@PutMapping("/tasks/{id}")
-	public ResponseEntity<Task> updateTask(@PathVariable("id") Long id, @RequestBody Task task)
-	{
+	public ResponseEntity<Task> updateTask(@PathVariable("id") Long id, @RequestBody Task task) {
 		Task searchedTask = taskService.updateTask(id, task);
 
-		if(searchedTask == null)
-		{
+		if (searchedTask == null) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 
@@ -98,16 +80,12 @@ public class TaskController
 	}
 
 	@DeleteMapping("/tasks/{id}")
-	public ResponseEntity<HttpStatus> deleteTask(@PathVariable("id") Long id)
-	{
-		try
-		{
+	public ResponseEntity<HttpStatus> deleteTask(@PathVariable("id") Long id) {
+		try {
 			taskService.deleteTask(id);
 
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-		}
-		catch (Exception e)
-		{
+		} catch (Exception e) {
 			e.printStackTrace();
 
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

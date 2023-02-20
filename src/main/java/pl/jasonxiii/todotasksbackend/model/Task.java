@@ -4,8 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "tasks")
-public class Task
-{
+public class Task {
 	@Id
 	@Column(name = "id", unique = true, nullable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,48 +19,39 @@ public class Task
 	@Column(name = "completed", nullable = false)
 	private Boolean completed;
 
-	public Task()
-	{
+	public Task() {
 
 	}
 
-	public void setId(Integer id)
-	{
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public void setName(String name)
-	{
+	public void setName(String name) {
 		this.name = name;
 	}
 
-	public void setDescription(String description)
-	{
+	public void setDescription(String description) {
 		this.description = description;
 	}
 
-	public void setCompleted(Boolean completed)
-	{
+	public void setCompleted(Boolean completed) {
 		this.completed = completed;
 	}
 
-	public Integer getId()
-	{
+	public Integer getId() {
 		return id;
 	}
 
-	public String getName()
-	{
+	public String getName() {
 		return name;
 	}
 
-	public String getDescription()
-	{
+	public String getDescription() {
 		return description;
 	}
 
-	public Boolean isCompleted()
-	{
+	public Boolean isCompleted() {
 		return completed;
 	}
 }

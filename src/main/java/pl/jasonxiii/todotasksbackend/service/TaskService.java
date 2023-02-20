@@ -9,44 +9,36 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class TaskService
-{
+public class TaskService {
 	private TaskRepository taskRepository;
 
 	@Autowired
-	public void setTaskRepository(TaskRepository tr)
-	{
+	public void setTaskRepository(TaskRepository tr) {
 		taskRepository = tr;
 	}
 
-	public Task createTask(Task task)
-	{
+	public Task createTask(Task task) {
 		return taskRepository.save(task);
 	}
 
-	public Task getTaskById(Long id)
-	{
+	public Task getTaskById(Long id) {
 		Optional<Task> task = taskRepository.findById(id);
 
 		return task.orElse(null);
 	}
 
-	public List<Task> getAllTasks()
-	{
+	public List<Task> getAllTasks() {
 		return taskRepository.findAll();
 	}
 
-	public List<Task> getAllCompletedTasks()
-	{
+	public List<Task> getAllCompletedTasks() {
 		return taskRepository.findByCompleted(true);
 	}
 
-	public Task updateTask(Long id, Task task)
-	{
+	public Task updateTask(Long id, Task task) {
 		Optional<Task> searchedTask = taskRepository.findById(id);
 
-		if(searchedTask.isPresent())
-		{
+		if (searchedTask.isPresent()) {
 			Task foundTask = searchedTask.get();
 
 			foundTask.setName(task.getName());
@@ -59,8 +51,7 @@ public class TaskService
 		return null;
 	}
 
-	public void deleteTask(Long id)
-	{
+	public void deleteTask(Long id) {
 		taskRepository.deleteById(id);
 	}
 }
